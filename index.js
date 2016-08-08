@@ -14,8 +14,9 @@ xhr.get(endpoint, function (err, data) {
   // Replace 'Space' below with the response
   var target = document.getElementsByTagName('main')[0]
 
-
   var satObj = JSON.parse(data.body)
-    target.innerHTML = greeting({name: satObj[0].name, position: satObj[0].altitude, visibility: satObj[0].visibility})
+
+
+    target.innerHTML = greeting({name: satObj.name, position: satObj.altitude, visibility: satObj.visibility})
   //target.innerHTML = greeting({name: 'Space Thing'})
 })
