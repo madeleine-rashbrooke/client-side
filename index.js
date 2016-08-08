@@ -1,7 +1,7 @@
 var xhr = require('xhr')
 var greeting = require('./views/greeting.hbs')
 
-var endpoint = 'https://api.wheretheiss.at/v1/satellites'
+var endpoint = 'https://api.wheretheiss.at/v1/satellites/25544'
 
 xhr.get(endpoint, function (err, data) {
   if (err) {
@@ -16,10 +16,6 @@ xhr.get(endpoint, function (err, data) {
 
 
   var satObj = JSON.parse(data.body)
-  // console.log("this is satObj: ", satObj)
-  var satName = satObj[0].name
-  var satPosition = satObj[0].id
-  console.log("this is satName: ", satName)
-  target.innerHTML = greeting({name: satName, position: satPosition})
+    target.innerHTML = greeting({name: satObj[0].name, position: satObj[0].altitude, visibility: satObj[0].visibility})
   //target.innerHTML = greeting({name: 'Space Thing'})
 })
